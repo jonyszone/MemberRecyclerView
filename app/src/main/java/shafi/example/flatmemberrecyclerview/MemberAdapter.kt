@@ -1,58 +1,38 @@
-package shafi.example.flatmemberrecyclerview;
+package shafi.example.flatmemberrecyclerview
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import shafi.example.flatmemberrecyclerview.MemberAdapter.MemberViewHolder
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-
-public class MemberAdapter extends  RecyclerView.Adapter<MemberAdapter.MemberViewHolder>{
-    private final Context context;
-    private final ArrayList<Member> members;
-
-    public MemberAdapter(Context context, ArrayList<Member> members){
-        this.context = context;
-        this.members = members;
+private class MemberAdapter(private val context: Context, private val members: ArrayList<Member>) :
+    RecyclerView.Adapter<MemberViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
+        val inflater = LayoutInflater.from(context)
+        val itemView = inflater.inflate(R.layout.member_list, parent, false)
+        return MemberViewHolder(itemView)
     }
 
-    @NonNull
-    @Override
-    public MemberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        LayoutInflater inflater = LayoutInflater.from(context);
-       View itemView = inflater.inflate(R.layout.member_list,parent, false);
-        return new MemberViewHolder(itemView);
+    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
+        holder.nameTV.text = members[position].name
+        holder.emailTV.text = members[position].email
+        holder.phoneTV.text = members[position].phoneNo
+        holder.memberIV.setImageResource(members[position].image)
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MemberViewHolder holder, int position) {
-        holder.nameTV.setText(members.get(position).getName());
-        holder.emailTV.setText(members.get(position).getEmail());
-        holder.phoneTV.setText(members.get(position).getPhoneNo());
-        holder.memberIV.setImageResource(members.get(position).getImage());
+    override fun getItemCount(): Int {
+        return members.size
     }
 
-    @Override
-    public int getItemCount() {
-       return members.size();
-    }
+    class MemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var nameTV: TextView = itemView.findViewById(R.id.member_name)
+        var emailTV: TextView = itemView.findViewById(R.id.member_email)
+        var phoneTV: TextView = itemView.findViewById(R.id.member_phone)
+        var memberIV: ImageView = itemView.findViewById(R.id.list_member)
 
-    static class MemberViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTV,emailTV,phoneTV;
-        ImageView memberIV;
-
-        public MemberViewHolder(@NonNull View itemView) {
-            super(itemView);
-            nameTV = itemView.findViewById(R.id.member_name);
-            emailTV = itemView.findViewById(R.id.member_email);
-            phoneTV = itemView.findViewById(R.id.member_phone);
-            memberIV = itemView.findViewById(R.id.list_member);
-        }
     }
 }
