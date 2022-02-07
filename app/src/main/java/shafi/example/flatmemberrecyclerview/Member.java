@@ -3,10 +3,10 @@ package shafi.example.flatmemberrecyclerview;
 import java.util.ArrayList;
 
 public class Member {
-    private int image;
-    private String name;
-    private String phoneNo;
-    private String email;
+    private final int image;
+    private final String name;
+    private final String phoneNo;
+    private final String email;
 
     public Member(int image, String name, String phoneNo, String email) {
         this.image = image;

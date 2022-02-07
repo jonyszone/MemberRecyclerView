@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MemberAdapter extends  RecyclerView.Adapter<MemberAdapter.MemberViewHolder>{
-    private Context context;
-    private ArrayList<Member> members;
+    private final Context context;
+    private final ArrayList<Member> members;
 
     public MemberAdapter(Context context, ArrayList<Member> members){
         this.context = context;
@@ -43,7 +43,7 @@ public class MemberAdapter extends  RecyclerView.Adapter<MemberAdapter.MemberVie
        return members.size();
     }
 
-    class MemberViewHolder extends RecyclerView.ViewHolder {
+    static class MemberViewHolder extends RecyclerView.ViewHolder {
         TextView nameTV,emailTV,phoneTV;
         ImageView memberIV;
 
