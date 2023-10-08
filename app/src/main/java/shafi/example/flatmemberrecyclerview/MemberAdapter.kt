@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import shafi.example.flatmemberrecyclerview.MemberAdapter.MemberViewHolder
 
-private class MemberAdapter(private val context: Context, private val members: ArrayList<Member>) :
+class MemberAdapter(private val context: Context, private val members: ArrayList<Member>) :
     RecyclerView.Adapter<MemberViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val inflater = LayoutInflater.from(context)

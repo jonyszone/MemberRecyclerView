@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import shafi.example.flatmemberrecyclerview.R
 import androidx.recyclerview.widget.RecyclerView
-import shafi.example.flatmemberrecyclerview.MemberAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 
 class MainActivity : AppCompatActivity() {
